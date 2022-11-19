@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
 const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 const multer = require('multer');
 const { graphqlHTTP } = require('express-graphql');
+const { clearFile } = require('./util/file');
 
 const graphqlSchema = require('./graphql/schema');
 const graphqlResolver = require('./graphql/resolvers');
@@ -13,11 +13,6 @@ const bodyParser = require('body-parser');
 const auth = require('./middleware/auth');
 
 const app = express();
-
-const clearImage = (imagePath) => {
-  const filePath = path.join(__dirname, '..', imagePath);
-  fs.unlink(filePath, (err) => console.log(err));
-};
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
