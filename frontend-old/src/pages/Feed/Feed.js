@@ -211,7 +211,7 @@ class Feed extends Component {
           const updatedPosts = prevState.posts.filter((p) => p._id !== postId);
           return { posts: updatedPosts, postsLoading: false };
         });
-      })
+``As`a`      })
       .catch((err) => {
         console.log(err);
         this.setState({ postsLoading: false });

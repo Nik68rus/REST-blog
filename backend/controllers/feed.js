@@ -58,6 +58,7 @@ exports.createPost = async (req, res, next) => {
       message: 'Post created successfully!',
       post,
     });
+    return user;
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;
