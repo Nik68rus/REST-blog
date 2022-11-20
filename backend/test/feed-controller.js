@@ -7,10 +7,9 @@ const FeedController = require('../controllers/feed');
 
 describe('Feed Controller = User status', () => {
   before((done) => {
+    require('dotenv').config();
     mongoose
-      .connect(
-        'mongodb+srv://Nikita:v1433vqe@nikitacluster.w46dzqa.mongodb.net/test-blog?retryWrites=true&w=majority'
-      )
+      .connect(process.env.MONGO_URI_TEST)
       .then((res) => {
         const user = new User({
           email: 'test@test.com',
